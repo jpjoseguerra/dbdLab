@@ -9,31 +9,33 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}" >
 
-    <title>Muestra anuncios</title>
+    <title>Comprar anuncio</title>
   </head>
-  <body class="py-4">
-    <h3 class="post-title">Anuncios publicados</h3>
-    <div class="container">
-      @forelse($ads as $ad)
-      
-      <div class="row mb-3">
-        <div class="col-6 themed-grid-col name-background">
-          <a href="/advertisement/comprarAnuncio/{{ $ad->id }}">
-            Nombre: {{ $ad->Titulo }}
-          </a></div>
-        <div class="col-3 themed-grid-col price-background">Precio por unidad ${{ $ad->PrecioUnitario }} CLP</div>
-        <div class="col-3 themed-grid-col owner-background">Queda(n) {{ $ad->Cantidad }} disponible(s)</div>
-      </div>
-      @empty
-      <p>No hay anuncios publicados.</p>
-      @endforelse
+  <body>
+    <h1>Datos del anuncio</h1>
+
+    <strong>Título</strong>
+    <p> {{ $anuncio->Titulo }} </p>
+
+    <strong> Descripción </strong>
+    <p> {{ $anuncio->Descripcion }} </p>
+
+    <strong> Cantidad </strong>
+    <p> {{ $anuncio->Cantidad }} </p>
+
+    <strong> Precio por unidad </strong>
+    <p> {{ $anuncio->PrecioUnitario }}</p>
+    <div>
+        <a href="/advertisement">Volver</a>
     </div>
-    <div class="top-right">
-            <a href="/">Inicio</a>
-            <a href="/advertisement/create">&NonBreakingSpace;Publicar</a>
-            <a href="/user/logout">&NonBreakingSpace;Logout</a>
-        </div>
+    <br>
     
+    <form action="/advertisement/compra/{{$anuncio->id}}" method="POST">
+        <button>Comprar</button>
+    </form>
+    <br>
+    
+    <!-- cambios en advertisement-->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

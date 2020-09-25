@@ -139,4 +139,22 @@ class AdvertisementController extends Controller
         
     }
 
+    public function comprarAnuncio($id){
+        $anuncio = Advertisement::findOrFail($id);
+        return view('advertisement.compraAviso', compact('anuncio'));
+    }
+
+    public function compra($id){
+        $anuncio = Advertisement::findOrFail($id);
+        /* if($anuncio->Cantidad == 0){
+            return redirect('/advertisement/noDisponible');
+        } */
+        $anuncio->Cantidad = $anuncio->Cantidad - 1;
+        $anuncio->save();
+
+        return redirect('/advertisement/showAdvertisements');
+    }
+
 }
+
+    

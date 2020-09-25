@@ -23,9 +23,17 @@ Route::get('/user/loginPage', 'UserController@loginPage')->middleware('guest');
 Route::post('/user/checkLogin', 'UserController@checkLogin');
 Route::get('/user/logout', 'UserController@logout');
 
+
+//rutas para comprar anuncio
+Route::get('advertisement/comprarAnuncio/{id}', 'AdvertisementController@comprarAnuncio');
+Route::post('/advertisement/compra/{id}', 'AdvertisementController@compra');
+
+
+
+
 Route::resource('category','CategoryController');
 Route::get('/advertisement/showAdvertisements', 'AdvertisementController@showAdvertisements')->middleware('auth');
-Route::resource('advertisement','AdvertisementController')->middleware('auth');
+Route::resource('advertisement','AdvertisementController');
 Route::resource('order','OrderController');
 Route::resource('paymentMethod','paymentMethodController');
 Route::resource('permission','PermissionController');
