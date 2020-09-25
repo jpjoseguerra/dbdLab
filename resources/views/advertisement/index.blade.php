@@ -18,12 +18,19 @@
       
       <div class="row mb-3">
         <div class="col-4 themed-grid-col name-background">
+          @if ($ad->Cantidad==0)
+            Nombre: {{ $ad->Titulo }}
+          @else
           <a href="/advertisement/comprarAnuncio/{{ $ad->id }}">
             Nombre: {{ $ad->Titulo }}
-          </a></div>
+          </a>
+          @endif
+        </div>
         <div class="col-4 themed-grid-col price-background">Precio por unidad ${{ $ad->PrecioUnitario }} CLP</div>
-        @if ($ad->Cantidad<=2) 
+        @if ($ad->Cantidad<=2 && $ad->Cantidad>0) 
         <div class="col-4 themed-grid-col owner-background">POCAS UNIDADES! {{ $ad->Cantidad }} disponible(s)</div>
+        @elseif ($ad->Cantidad==0) 
+        <div class="col-4 themed-grid-col owner-background">AGOTADO! {{ $ad->Cantidad }} disponible(s)</div>
         @else
         <div class="col-4 themed-grid-col owner-background">Queda(n) {{ $ad->Cantidad }} disponible(s)</div>
         @endif

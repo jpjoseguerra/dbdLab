@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Advertisement;
 use App\Category;
 use App\User;
+use App\Order;
 use Auth;
 
 class AdvertisementController extends Controller
@@ -144,16 +145,27 @@ class AdvertisementController extends Controller
         return view('advertisement.compraAviso', compact('anuncio'));
     }
 
-    public function compra($id){
+    public function compra($id, Request $request){
         $anuncio = Advertisement::findOrFail($id);
-        if($anuncio->Cantidad == 0){
+        
+        if($anuncio->Cantidad < $request->Cantidad){
             return view('advertisement.noDisponible', compact('anuncio'));//no disponible
         } 
-        $anuncio->Cantidad = $anuncio->Cantidad - 1;
+        
+        $anuncio->Cantidad -= $request->Cantidad;
         $anuncio->save();
+
+        $orden = new Order;
+        $orden->Estado = 'En proceso';
+        $orden->Cantidad = $request->Cantidad; //implementar compras multiples si alcanzo
+        $orden->IDUsuario = Auth::user()->id; //usuario logeado en el sistema
+        $orden->IDAnuncio = $id;
+        $orden->save();
 
         return redirect('/advertisement/showAdvertisements');
     }
+
+
 
 }
 

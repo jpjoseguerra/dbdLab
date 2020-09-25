@@ -34,6 +34,7 @@
             <br>
             
             <form action="/advertisement/compra/{{$anuncio->id}}" method="POST">
+                <input type = number min=1 name = "Cantidad"> </input>
                 <button>Comprar</button>
             </form>
         </div>
