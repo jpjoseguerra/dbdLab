@@ -12,28 +12,32 @@
     <title>Comprar anuncio</title>
   </head>
   <body>
-    <h1>Datos del anuncio</h1>
+    <div class="centered-div">
+        
+        <div class="col-6">
+            <h1>Datos del anuncio</h1>
 
-    <strong>Título</strong>
-    <p> {{ $anuncio->Titulo }} </p>
+            <strong>Título</strong>
+            <p> {{ $anuncio->Titulo }} </p>
 
-    <strong> Descripción </strong>
-    <p> {{ $anuncio->Descripcion }} </p>
+            <strong> Descripción </strong>
+            <p> {{ $anuncio->Descripcion }} </p>
 
-    <strong> Cantidad </strong>
-    <p> {{ $anuncio->Cantidad }} </p>
+            <strong> Cantidad </strong>
+            <p> {{ $anuncio->Cantidad }} </p>
 
-    <strong> Precio por unidad </strong>
-    <p> {{ $anuncio->PrecioUnitario }}</p>
-    <div>
-        <a href="/advertisement">Volver</a>
+            <strong> Precio por unidad </strong>
+            <p> {{ $anuncio->PrecioUnitario }}</p>
+            <div>
+                <a href="/advertisement">Volver</a>
+            </div>
+            <br>
+            
+            <form action="/advertisement/compra/{{$anuncio->id}}" method="POST">
+                <button>Comprar</button>
+            </form>
+        </div>
     </div>
-    <br>
-    
-    <form action="/advertisement/compra/{{$anuncio->id}}" method="POST">
-        <button>Comprar</button>
-    </form>
-    <br>
     
     <!-- cambios en advertisement-->
 

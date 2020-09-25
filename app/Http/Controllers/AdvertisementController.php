@@ -146,9 +146,9 @@ class AdvertisementController extends Controller
 
     public function compra($id){
         $anuncio = Advertisement::findOrFail($id);
-        /* if($anuncio->Cantidad == 0){
-            return redirect('/advertisement/noDisponible');
-        } */
+        if($anuncio->Cantidad == 0){
+            return view('advertisement.noDisponible', compact('anuncio'));//no disponible
+        } 
         $anuncio->Cantidad = $anuncio->Cantidad - 1;
         $anuncio->save();
 

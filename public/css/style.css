@@ -1,6 +1,6 @@
 body{
     font-size: 1.3vw;
-    background: #8584EB;
+    background: #7d7cbe;
     color: #ffffff;
     height: 100%;
     width: 100%;
@@ -23,7 +23,7 @@ a{
 }
 
 .back-color{
-    color: #8584EB;
+    color: #7d7cc0;
 }
 
 .alert-size{
@@ -112,6 +112,8 @@ a{
 .owner-background{
     background-color: #5856D1;
 }
+
+
 
 
 

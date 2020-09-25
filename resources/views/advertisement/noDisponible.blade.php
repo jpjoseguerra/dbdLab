@@ -8,37 +8,41 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}" >
-
-    <title>Muestra anuncios</title>
-  </head>
-  <body class="py-4">
-    <h3 class="post-title">Anuncios publicados</h3>
-    <div class="container">
-      @forelse($ads as $ad)
-      
-      <div class="row mb-3">
-        <div class="col-4 themed-grid-col name-background">
-          <a href="/advertisement/comprarAnuncio/{{ $ad->id }}">
-            Nombre: {{ $ad->Titulo }}
-          </a></div>
-        <div class="col-4 themed-grid-col price-background">Precio por unidad ${{ $ad->PrecioUnitario }} CLP</div>
-        @if ($ad->Cantidad<=2) 
-        <div class="col-4 themed-grid-col owner-background">POCAS UNIDADES! {{ $ad->Cantidad }} disponible(s)</div>
-        @else
-        <div class="col-4 themed-grid-col owner-background">Queda(n) {{ $ad->Cantidad }} disponible(s)</div>
-        @endif
-      </div>
-
-      @empty
-      <p>No hay anuncios publicados.</p>
-      @endforelse
-    </div>
-    <div class="top-right">
-            <a href="/">Inicio</a>
-            <a href="/advertisement/create">&NonBreakingSpace;Publicar</a>
-            <a href="/user/logout">&NonBreakingSpace;Logout</a>
-        </div>
     
+    <title>Ingreso exitoso</title>
+    </head>
+    <body>
+      <div class="top-right">
+        <a href="/">Inicio</a>
+     </div>
+
+      <div class="centered-div alert-size">
+        <div class="alert alert-success success-block">
+          <div class="welcome-msg">
+            <strong>{{ $anuncio->Titulo }} no diponible,</strong> 
+          </div>
+          <div class="row">
+
+            <div class="col start-btn">
+              <form action="/advertisement" method="get">
+                <button>Ver anuncios</button>
+              </form>
+            </div>
+
+            <div class="col centered-btn">
+              <form action="/" method="get">
+                <button>Inicio</button>
+              </form>
+            </div>
+
+            <div class="col end-btn">
+              <form action="/user/logout" method="get">
+                <button>Logout</button>
+              </form>
+            </div>
+        </div>
+      </div>
+        
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
